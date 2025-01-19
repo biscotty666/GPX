@@ -4,3 +4,4 @@ contextily
 movingpandas
 geoviews
 mapclassify
+stonesoup
