@@ -25,7 +25,7 @@ cfile = str(os.path.join(inPath, 'combined.csv'))
 print(cfile, type(cfile))
 with open(cfile, 'w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(['Id', 'Lat', 'Lon', 'Elev', 'Time',
+    writer.writerow(['Id', 'Name', 'Lat', 'Lon', 'Elev', 'Time',
                         'Temp', 'Weather'])
 
 for gpx_file in files:
@@ -50,12 +50,12 @@ for gpx_file in files:
         longitude = track['lon']
         elevation_value = elevation.text
         time = time.text
-        data.append([id, latitude, longitude, elevation_value,
+        data.append([id, name, latitude, longitude, elevation_value,
                     time, temp, weather])
 
     with open(csv_file, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(['Id', 'Lat', 'Lon', 'Elev', 'Time',
+        writer.writerow(['Id', 'Name', 'Lat', 'Lon', 'Elev', 'Time',
                         'Temp', 'Weather'])
         writer.writerows(data)
 
