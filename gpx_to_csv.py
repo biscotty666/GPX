@@ -26,7 +26,7 @@ print(cfile, type(cfile))
 with open(cfile, 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['Id', 'Name', 'Lat', 'Lon', 'Elev', 'Time',
-                        'Temp', 'Weather'])
+                        'Temp', 'Weather', 'Sport'])
 
 for gpx_file in files:
     with open(gpx_file, 'r') as f:
@@ -39,6 +39,7 @@ for gpx_file in files:
     times = soup.find_all('time')
     temp = soup.find('s2t:temperature').text
     weather = soup.find('s2t:weather').text
+    sport = soup.find('s2t:sport').text
     name = soup.find('name').text
     sf_name =  os.path.splitext(gpx_file)[0]
     id = os.path.split(sf_name)[1]
@@ -51,12 +52,12 @@ for gpx_file in files:
         elevation_value = elevation.text
         time = time.text
         data.append([id, name, latitude, longitude, elevation_value,
-                    time, temp, weather])
+                    time, temp, weather, sport])
 
     with open(csv_file, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['Id', 'Name', 'Lat', 'Lon', 'Elev', 'Time',
-                        'Temp', 'Weather'])
+                        'Temp', 'Weather', 'Sport'])
         writer.writerows(data)
 
     with open(cfile, 'a', newline='') as f:
