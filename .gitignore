@@ -1,7 +1,7 @@
 .direnv/
 .envrc
 _build/
-data/*
+data
 .ipynb_checkpoints/
 .virtual_documents/
 Explore/
